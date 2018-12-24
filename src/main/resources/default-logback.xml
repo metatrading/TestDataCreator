@@ -1,0 +1,41 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy/MM/dd HH:mm:ss}] [%thread] [%logger] [%-5level] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<discriminator>
+			<key>logfileBasename</key>
+			<defaultValue>global</defaultValue>
+		</discriminator>
+		<!-- sift into different files -->
+		<sift>
+			<appender name="FILE-${context}" class="ch.qos.logback.core.FileAppender">
+				<file>${logfileBasename}.log</file>
+				<encoder>
+					<pattern>[%d{yyyy/MM/dd HH:mm:ss}] [%thread] [%logger] [%-5level] %msg%n%ex{full}</pattern>
+					<charset>UTF-8</charset>
+				</encoder>
+			</appender>
+		</sift>
+	</appender>
+
+	<logger name="jp.terasoluna.fw" level="INFO" />
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="org.apache.ibatis" level="ERROR" />
+	<logger name="org.mybatis.spring" level="ERROR" />
+	<logger name="org.dozer" level="ERROR" />
+	<logger name="org.hibernate.validator" level="ERROR" />
+	<logger name="java.sql.Connection" level="ERROR" />
+	<logger name="java.sql.Statement" level="ERROR" />
+	<logger name="java.sql.PreparedStatement" level="ERROR" />
+	<logger name="java.sql.ResultSet" level="ERROR" />
+	<logger name="java.sql.CallableStatement" level="ERROR" />
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

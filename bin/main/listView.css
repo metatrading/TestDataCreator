@@ -1,0 +1,20 @@
+// 記載順で適用されていく。
+// 初期状態
+.table-view:row-selection {
+	-fx-font :  normal normal 9pt "メイリオ";
+}
+.table-view .table-row-cell:even {
+    -fx-background-color: #fdfcca;
+}
+.table-view .table-row-cell:odd {
+    -fx-background-color: #e6eef6;
+}   
+// 動的状態
+.table-view:focused .table-row-cell:selected {
+    -fx-background-color: #8080ff;
+    -fx-table-cell-border-color: #8080ff;
+}
+.table-view:hover .table-row-cell:hover {
+    -fx-background-color: blue;
+    -fx-table-cell-border-color: blue;
+}
