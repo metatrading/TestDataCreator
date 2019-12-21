@@ -1,19 +1,22 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'eclipse'
+plugins {
+    id 'java'
+    id 'application'
+    id 'maven'
+    id 'idea'
+    id "io.freefair.lombok" version "3.1.4"
+}
+println gradle.gradleHomeDir
 
 group = 'TestDataCreatorByDB'
 version = '0.0.1-SNAPSHOT'
 
 description = """"""
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 11
+targetCompatibility = 11
 tasks.withType(JavaCompile) {
 	options.encoding = 'UTF-8'
 }
-
-
 
 repositories {
 
