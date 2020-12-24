@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'application'
-    id 'maven'
     id 'idea'
     id "io.freefair.lombok" version "3.1.4"
     id 'org.openjfx.javafxplugin' version '0.0.8'
