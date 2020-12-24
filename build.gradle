@@ -4,7 +4,15 @@ plugins {
     id 'maven'
     id 'idea'
     id "io.freefair.lombok" version "3.1.4"
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+
 }
+javafx {
+    version = "13"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+mainClassName = "main.Main"
+
 println gradle.gradleHomeDir
 
 group = 'TestDataCreatorByDB'
@@ -19,8 +27,8 @@ tasks.withType(JavaCompile) {
 }
 
 repositories {
+    mavenCentral()
 
-     maven { url "http://repo.maven.apache.org/maven2" }
 }
 dependencies {
     implementation 'com.h2database:h2:1.4.197'
