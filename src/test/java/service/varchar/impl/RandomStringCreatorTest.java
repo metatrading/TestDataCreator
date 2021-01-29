@@ -18,7 +18,7 @@ public class RandomStringCreatorTest extends TestCase {
 	public void test01() {
 		RandomStringCreator rsc = new RandomStringCreator();
 
-		String tableName = "mfif_out_sap_journals";
+		String tableName = "test";
 		String columnName = "through_bank_code";
 		Class<?> dataType = String.class;
 		int size = 15;
@@ -33,7 +33,7 @@ public class RandomStringCreatorTest extends TestCase {
 	public void test02() {
 		RandomStringCreator rsc = new RandomStringCreator();
 
-		String tableName = "mfif_out_sap_journals";
+		String tableName = "test";
 		String columnName = "through_bank_code";
 		Class<?> dataType = String.class;
 		int size = 1;
@@ -48,7 +48,7 @@ public class RandomStringCreatorTest extends TestCase {
 	public void test03() {
 		RandomStringCreator rsc = new RandomStringCreator();
 
-		String tableName = "mfif_out_sap_journals";
+		String tableName = "test";
 		String columnName = "system_code";
 		Class<?> dataType = String.class;
 		int size = 2;

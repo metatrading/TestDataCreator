@@ -32,7 +32,7 @@ public class VarcharDatasCreatorTest extends TestCase {
 	@Test
 	public void test01() {
 		vdc.setSeed(1);
-		String tableName = "mfif_out_sap_journals";
+		String tableName = "test";
 		String columnName = "through_bank_code";
 		Class<?> dataType = String.class;
 		int size = 15;

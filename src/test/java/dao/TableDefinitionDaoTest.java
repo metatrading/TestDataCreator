@@ -42,10 +42,10 @@ public class TableDefinitionDaoTest extends TestCase {
 	@Test
 	public void daoTest03() throws SQLException, Exception {
 		TableDefinitionDao dao = new TableDefinitionDao();
-		TableDefinitionDto ret = dao.getMetadata("mfif_out_sap_journals");
+		TableDefinitionDto ret = dao.getMetadata("test");
 		
 		assertNotNull(ret);
-		assertThat(ret.getTableName(), is("mfif_out_sap_journals"));
+		assertThat(ret.getTableName(), is("test"));
 		
 		List<ColumnDefinitionDto> columnList = ret.getColumnList();
 		assertThat(columnList.size(), is(112));
