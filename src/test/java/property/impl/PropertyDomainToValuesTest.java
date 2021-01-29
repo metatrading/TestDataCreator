@@ -16,7 +16,7 @@ public class PropertyDomainToValuesTest extends TestCase {
 	
 	@Test
 	public void test01() {
-		List<String> values = PropertyDomainToValues.getValues("SAPヘッダテキスト");
+		List<String> values = PropertyDomainToValues.getValues("ヘッダテキスト");
 		assertThat(values.get(0), is("test1"));
 		assertThat(values.get(1), is("test2"));
 	}
