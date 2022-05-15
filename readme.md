@@ -1,6 +1,17 @@
 # 機能概要
 テーブルを指定することでそのテーブル定義を取得し、その定義に応じたテストデータ（xls)を作成する。
-
+## 設定画面
+![img.png](readmePicture/img.png)
+## テーブル、行数の指定
+![img_1.png](readmePicture/img_1.png)
+## 生成結果
+![img_2.png](readmePicture/img_2.png)
+## 全選択（Ctrl + A) + コピー(Ctrl + C)
+![img_3.png](readmePicture/img_3.png)
+## Paste to Excel (HTML Format) 
+![img_4.png](readmePicture/img_4.png)
+## Paste to Editor (TSV Format)
+![img5.png](readmePicture/img5.png)
 # 使い方
 ```sh
 gradle run
