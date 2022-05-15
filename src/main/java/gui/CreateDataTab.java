@@ -81,8 +81,8 @@ public class CreateDataTab extends Tab {
 						return;
 					}
 
-					create((String[]) Arrays.asList(tableInputField.getText()).toArray(),
-							Integer.valueOf(rowsize.getText()));
+					create(new String[]{tableInputField.getText()},
+							Integer.parseInt(rowsize.getText()));
 					
 					
 					TableDefinitionDto metadata = dao.getMetadata(tableInputField.getText());
@@ -186,7 +186,9 @@ public class CreateDataTab extends Tab {
 			if (colDef.getDataType().equals(Integer.class)) {
 				datasCreator = decimalDatasCreator;
 			}
-			
+			if (colDef.getDataType().equals(Short.class)) {
+				datasCreator = decimalDatasCreator;
+			}
 			if (colDef.getDataType().equals(Date.class) || colDef.getDataType().equals(Timestamp.class)) {
 				datasCreator = dateDatasCreator;
 			}

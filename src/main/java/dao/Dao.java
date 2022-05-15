@@ -73,6 +73,7 @@ public class Dao {
 		if (!password.get().isEmpty()) {
 			connectionProperty.setProperty("password", password.get());
 		}
+		connectionProperty.setProperty("schema", schema.get());
 		
 		Connection con = null;
 		logger.info("url : " + url);

@@ -11,6 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.util.Properties;
+
 /**
  * ・CTRLで範囲選択 ・範囲選択状態でコピー ・
  * 
