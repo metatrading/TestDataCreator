@@ -1,28 +1,10 @@
-package dto.db;
+package dto.db
 
-@lombok.Builder
-@lombok.AllArgsConstructor
-@lombok.NoArgsConstructor
-@lombok.ToString
-public class ColumnDefinitionDto {
-	
-	@lombok.Setter
-	@lombok.Getter
-	private String tableName;
-	
-	@lombok.Setter
-	@lombok.Getter
-	private String columnName;
-	
-	@lombok.Setter
-	@lombok.Getter
-	private Class<?> dataType;
-	
-	@lombok.Setter
-	@lombok.Getter
-	private int size;
-	
-	@lombok.Setter
-	@lombok.Getter
-	private int degits;
-}
+
+data class ColumnDefinitionDto(
+        val tableName: String = "",
+        val columnName: String = "",
+        val dataType: Class<*>,
+        val size: Int = 0,
+        val digits: Int = 0
+)

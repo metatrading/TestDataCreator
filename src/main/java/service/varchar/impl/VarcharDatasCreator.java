@@ -41,7 +41,7 @@ public class VarcharDatasCreator implements DatasCreator<String> {
 	@Override
 	public List<String> create(ColumnDefinitionDto def, int rowSize, int startSeed) throws Exception {
 		// table & column To domain
-		String domain = PropertyTableColumnToDomain.getDomain(def);
+		String domain = PropertyTableColumnToDomain.Companion.getDomain(def);
 
 		// domain to values
 		List<String> values = PropertyDomainToValues.getValues(domain);

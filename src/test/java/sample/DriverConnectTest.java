@@ -1,5 +1,7 @@
 package sample;
 
+import org.junit.jupiter.api.Test;
+
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.Driver;
@@ -9,11 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
-@RunWith(JUnit4.class)
 public class DriverConnectTest {
 
 	@Test

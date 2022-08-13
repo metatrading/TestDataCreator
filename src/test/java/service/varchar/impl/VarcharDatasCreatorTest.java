@@ -1,31 +1,26 @@
 package service.varchar.impl;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
+import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import app.AppConfig;
 import dto.db.ColumnDefinitionDto;
-import junit.framework.TestCase;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 @ContextConfiguration(classes = AppConfig.class)
-public class VarcharDatasCreatorTest extends TestCase {
+public class VarcharDatasCreatorTest {
 	@Inject
 	private VarcharDatasCreator vdc;
 
-	@Before
-	public void before() {
+	@BeforeEach
+	public static void before() {
 		System.out.println("BEFORE");
 	}
 
@@ -41,9 +36,9 @@ public class VarcharDatasCreatorTest extends TestCase {
 		int rowSize = 2;
 		List<String> list = vdc.create(def, rowSize);
 
-		assertThat(list.size(), is(2));
-		assertThat(list.get(0), is("bankcode1"));
-		assertThat(list.get(1), is("bankcode2"));
+		assertThat(list.size()).isEqualTo(2);
+		assertThat(list.get(0)).isEqualTo("bankcode1");
+		assertThat(list.get(1)).isEqualTo("bankcode2");
 	}
 
 	@Test
@@ -58,8 +53,8 @@ public class VarcharDatasCreatorTest extends TestCase {
 		int rowSize = 2;
 		List<String> list = vdc.create(def, rowSize);
 
-		assertThat(list.size(), is(2));
-		assertThat(list.get(0), is("t00000000000001"));
-		assertThat(list.get(1), is("t00000000000002"));
+		assertThat(list.size()).isEqualTo(2);
+		assertThat(list.get(0)).isEqualTo("t00000000000001");
+		assertThat(list.get(1)).isEqualTo("t00000000000002");
 	}
 }

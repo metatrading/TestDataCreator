@@ -1,19 +1,15 @@
 package service.decimal.impl;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
 import dto.db.ColumnDefinitionDto;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class RandomDecimalCreatorTest extends TestCase {
+public class RandomDecimalCreatorTest  {
 
 	@Test
 	public void test01() {
@@ -29,6 +25,6 @@ public class RandomDecimalCreatorTest extends TestCase {
 		
 		System.out.println(ret);
 		assertNotNull(ret);
-		assertThat(ret.scale(), is(4));
+		assertThat(ret.scale()).isEqualTo(4);
 	}
 }

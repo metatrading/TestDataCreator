@@ -5,9 +5,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.util.Enumeration;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +13,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
 
-@RunWith(JUnit4.class)
 public class DriverSearchTest {
 
 	Logger logger = LoggerFactory.getLogger(DriverSearchTest.class);

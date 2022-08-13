@@ -38,7 +38,7 @@ public class CharacterDatasCreator implements DatasCreator<String> {
 		List<String> columnDatas = new LinkedList<>();
 
 		// table & column To domain
-		String domain = PropertyTableColumnToDomain.getDomain(def);
+		String domain = PropertyTableColumnToDomain.Companion.getDomain(def);
 
 		// domain to values
 		List<String> domainValues = PropertyDomainToValues.getValues(domain);

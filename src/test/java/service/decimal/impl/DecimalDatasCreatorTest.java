@@ -1,25 +1,24 @@
 package service.decimal.impl;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import app.AppConfig;
 import dto.db.ColumnDefinitionDto;
-import junit.framework.TestCase;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 @ContextConfiguration(classes = AppConfig.class)
-public class DecimalDatasCreatorTest extends TestCase {
+public class DecimalDatasCreatorTest{
 
 	@Inject
 	private DecimalDatasCreator ddc;
@@ -36,9 +35,9 @@ public class DecimalDatasCreatorTest extends TestCase {
 		int rowSize = 2;
 		List<BigDecimal> list = ddc.create(def, rowSize);
 
-		assertThat(list.size(), is(2));
+		assertThat(list.size()).isEqualTo(2);
 		for (BigDecimal bigDecimal : list) {
-			assertThat(bigDecimal.scale(), is(4));
+			assertThat(bigDecimal.scale()).isEqualTo(4);
 		}
 	}
 }

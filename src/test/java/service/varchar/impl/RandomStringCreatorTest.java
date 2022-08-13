@@ -1,18 +1,11 @@
 package service.varchar.impl;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
 import dto.db.ColumnDefinitionDto;
-import junit.framework.TestCase;
-import service.varchar.impl.RandomStringCreator;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class RandomStringCreatorTest extends TestCase {
+public class RandomStringCreatorTest {
 
 	@Test
 	public void test01() {
@@ -26,7 +19,7 @@ public class RandomStringCreatorTest extends TestCase {
 		ColumnDefinitionDto def = new ColumnDefinitionDto(tableName, columnName, dataType, size, degits);
 		int dataNo = 4;
 		String param = rsc.create(def, 1, dataNo);
-		assertThat(param, is("t00000000000005"));
+		assertThat(param).isEqualTo("t00000000000005");
 	}
 
 	@Test
@@ -41,7 +34,7 @@ public class RandomStringCreatorTest extends TestCase {
 		ColumnDefinitionDto def = new ColumnDefinitionDto(tableName, columnName, dataType, size, degits);
 		int dataNo = 4;
 		String param = rsc.create(def, 1, dataNo);
-		assertThat(param, is("5"));
+		assertThat(param).isEqualTo("5");
 	}
 
 	@Test
@@ -56,6 +49,6 @@ public class RandomStringCreatorTest extends TestCase {
 		ColumnDefinitionDto def = new ColumnDefinitionDto(tableName, columnName, dataType, size, degits);
 		int dataNo = 10;
 		String param = rsc.create(def, 1, dataNo);
-		assertThat(param, is("s1"));
+		assertThat(param).isEqualTo("s1");
 	}
 }

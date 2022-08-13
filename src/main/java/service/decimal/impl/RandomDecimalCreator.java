@@ -26,14 +26,14 @@ public class RandomDecimalCreator implements RandomDataCreator<BigDecimal> {
 	String stringSeisu = String.valueOf(mergeSeed);
 	
 	// 小数生成
-	int intShosu = RandomUtils.nextInt(0, (int) Math.pow(10, def.getDegits()));
-	
+	int intShosu = RandomUtils.nextInt(0, (int) Math.pow(10, def.getDigits()));
+
 	// 整数＋小数
 	String constructorValue = stringSeisu + "." + String.valueOf(intShosu);
 	
 	// DECIMAL生成
 	BigDecimal val = new BigDecimal(constructorValue);
-	val = val.setScale(def.getDegits(), RoundingMode.HALF_DOWN);
+	val = val.setScale(def.getDigits(), RoundingMode.HALF_DOWN);
 	
 	if (val.precision() > def.getSize()) {
 	    val = val.remainder(BigDecimal.TEN.multiply(BigDecimal.valueOf(def.getSize())));
