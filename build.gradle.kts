@@ -48,11 +48,11 @@ dependencies {
     implementation("org.openjfx:javafx-fxml:18.0.2")
 
     implementation("com.h2database:h2:2.1.214")
-    implementation("com.google.guava:guava:31.1-jre")
     implementation("javax.inject:javax.inject:1")
     implementation("mysql:mysql-connector-java:8.0.30")
     implementation("com.microsoft.sqlserver:mssql-jdbc:10.2.1.jre17")
     implementation("com.typesafe:config:1.4.2")
+    implementation("org.apache.commons:commons-lang3")
 
     implementation("org.slf4j:slf4j-api:1.7.36")
     implementation("ch.qos.logback:logback-classic:1.2.11")
