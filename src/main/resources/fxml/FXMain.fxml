@@ -10,6 +10,6 @@
          xmlns:fx="http://javafx.com/fxml"
          fx:controller="tdc.controller.FXMainController"
 >
-    <fx:include source="/fxml/CreateDataTab.fxml"/>
+    <fx:include source="/fxml/MainTab.fxml"/>
     <fx:include source="/fxml/JdbcConfigTab.fxml"/>
 </TabPane>

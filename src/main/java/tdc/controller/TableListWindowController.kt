@@ -3,10 +3,10 @@ package tdc.controller
 import javafx.beans.property.SimpleStringProperty
 import javafx.collections.ObservableList
 import javafx.fxml.FXML
+import javafx.scene.control.Label
 import javafx.scene.control.TableColumn
 import javafx.scene.control.TableView
 import javafx.scene.input.KeyEvent
-import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
 import tdc.dao.TableDefinitionDao
 import tdc.db.TableDefinitionDto
@@ -29,54 +29,53 @@ class TableListWindowController(
     @FXML
     lateinit var tableView: TableView<Map<String, String>>
 
-//    private var columnValueMapList: ObservableList<Map<String, String>> = FXCollections.observableArrayList()
-
-    @FXML
     fun initialize() {
-        log.info("initialize called.")
         tableView.stylesheets.add("listView.css")
     }
 
     fun calcData(tableName: String, rowSizeString: String, metadata: TableDefinitionDto) {
+        if (tableName.isEmpty()) throw java.lang.Exception("テーブル名が未指定です。")
+
         val rowSize: Int = rowSizeString.toInt()
         val columnValueMapList = tableView.items
-        setData(arrayOf(tableName), columnValueMapList, rowSize)
-        setInitialBefore(tableView, columnValueMapList, metadata)
+        val def: TableDefinitionDto = resolveTableDefinition(tableName)
+        // テーブル確定、Data生成、
+        setData(def, columnValueMapList, rowSize)
+        // ヘッダ生成
+        val columns = resolveColumns(columnValueMapList[0].keys)
+        tableView.columns.setAll(columns)
+        // then Copy
+        tableView.addEventHandler(KeyEvent.KEY_RELEASED, CopieAndPaster(tableView, def))
+    }
+
+    private fun resolveTableDefinition(tableName: String): TableDefinitionDto {
+        val def: TableDefinitionDto = dao.getMetadata(tableName)
+        if (def.columnList.isEmpty()) {
+            log.error(tableName + "は、DBに存在しません。")
+            throw java.lang.Exception(tableName + "は、DBに存在しません。")
+        }
+        return def;
     }
 
     /**
      * data create.
-     */
+     * */
     @Throws(java.lang.Exception::class)
     fun setData(
-        targetTables: Array<String>, columnValueMapList: ObservableList<Map<String, String>>,
+        def: TableDefinitionDto,
+        columnValueMapList: ObservableList<Map<String, String>>,
         rowSize: Int
     ) {
-        // テーブルループ
-        for (tableName in targetTables) {
-            log.info("$tableName start.")
-            if (tableName.isEmpty()) throw java.lang.Exception("テーブル名が未指定です。")
-            val def: TableDefinitionDto = dao.getMetadata(tableName)
-            if (def.columnList.isEmpty()) {
-                log.error(tableName + "は、DBに存在しません。")
-                throw java.lang.Exception(tableName + "は、DBに存在しません。")
+        // sample data generate.
+        val datasList: List<List<*>>? = createTestDataListByColumn(def, rowSize, 0)
+        for (rowNumber in 1..rowSize) {
+            val map: MutableMap<String, String> = LinkedHashMap()
+            for (column in def.columnList.indices) {
+                val value = datasList!![column][rowNumber - 1].toString()
+                // カラムごとに値を設定
+                map[def.columnList[column].columnName] = value
             }
-            val datasList: List<List<*>>? = createTestDataListByColumn(def, rowSize, 0)
-
-            // 行ループ
-            for (rowNumber in 1..rowSize) {
-                val map: MutableMap<String, String> = LinkedHashMap()
-
-                // 列ループ
-                for (column in def.columnList.indices) {
-                    val value = datasList!![column][rowNumber - 1].toString()
-
-                    // カラムごとに値を設定
-                    map[def.columnList[column].columnName] = value
-                }
-                log.info("add data map:{}", map)
-                columnValueMapList.add(map)
-            }
+            columnValueMapList.add(map)
         }
     }
 
@@ -119,18 +118,14 @@ class TableListWindowController(
         return columnDatasList
     }
 
-    private fun setInitialBefore(
-        table: TableView<Map<String, String>>, columnValueMapList: List<Map<String, String>>, def: TableDefinitionDto?
-    ) {
+    private fun resolveColumns(
+        columnNames: Set<String>
+    ): MutableList<TableColumn<Map<String, String>, String>> {
         val columnList: MutableList<TableColumn<Map<String, String>, String>> = mutableListOf()
-
         // 1 row pick
-        for ((key) in columnValueMapList[0]) {
-            log.info("key:{}", key)
+        for (key in columnNames) {
             val colum = TableColumn<Map<String, String>, String>(
-                capitalize(
-                    key
-                )
+                key
             )
             colum.setCellValueFactory { arg0 ->
                 SimpleStringProperty(
@@ -139,8 +134,7 @@ class TableListWindowController(
             }
             columnList.add(colum)
         }
-        table.columns.addAll(columnList)
-        table.addEventHandler(KeyEvent.KEY_RELEASED, CopieAndPaster(table, def))
+        return columnList
     }
 
     private fun capitalize(name: String): String {

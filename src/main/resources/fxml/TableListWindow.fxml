@@ -6,12 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx"
+<TableView fx:id="tableView" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="tdc.controller.TableListWindowController">
-    <Label>TestLabel</Label>
-    <TableView fx:id="tableView">
-        <columns/>
-        <items/>
-    </TableView>
-</VBox>
+</TableView>

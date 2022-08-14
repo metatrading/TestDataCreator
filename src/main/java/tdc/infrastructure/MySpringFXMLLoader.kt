@@ -5,17 +5,19 @@ import javafx.scene.Parent
 import javafx.util.Callback
 import lombok.RequiredArgsConstructor
 import org.springframework.context.ApplicationContext
+import org.springframework.context.annotation.Scope
 import org.springframework.stereotype.Component
 import tdc.logger.log
 import java.io.IOException
 
 @Component
+@Scope(scopeName = "prototype")
 @RequiredArgsConstructor
 open class MySpringFXMLLoader(
     private val context: ApplicationContext
 ) {
     // ★オリジナルの FXMLLoader を生成
-    val loader: FXMLLoader = FXMLLoader()
+    private val loader: FXMLLoader = FXMLLoader()
 
     init {
         // ★ControllerFactory に ApplicationContext を利用する
@@ -38,6 +40,10 @@ open class MySpringFXMLLoader(
             MySpringFXMLLoader::class.java
                 .classLoader.getResourceAsStream(path)
         )
+    }
+
+    fun <T> getController(): T {
+        return loader.getController()
     }
 
 }

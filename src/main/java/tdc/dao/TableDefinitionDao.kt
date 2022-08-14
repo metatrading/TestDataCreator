@@ -85,6 +85,7 @@ class TableDefinitionDao(private val dao: Dao) {
             Types.INTEGER -> Int::class.java
             Types.BIGINT -> Long::class.java
             Types.TINYINT, Types.BIT -> Short::class.java
+            Types.LONGNVARCHAR, Types.LONGVARCHAR -> String::class.java // TEXT
             else -> throw IllegalArgumentException(
                 "型のマッピングが未定義です。追加してください。TYPE:" + rs.getString("TYPE_NAME") + "[" + rs.getInt("DATA_TYPE") + "]"
             )
