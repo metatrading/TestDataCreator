@@ -1,7 +1,7 @@
-package tdc.service;
+package tdc.service
 
-import tdc.db.ColumnDefinitionDto;
+import tdc.db.ColumnDefinitionDto
 
-public interface RandomDataCreator<T> {
-    T create(ColumnDefinitionDto cellDef, int seed, int dataNo);
+interface RandomDataCreator<T> {
+    fun create(cellDef: ColumnDefinitionDto?, seed: Int, dataNo: Int): T
 }

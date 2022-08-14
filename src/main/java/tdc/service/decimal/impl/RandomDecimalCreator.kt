@@ -1,43 +1,36 @@
-package tdc.service.decimal.impl;
+package tdc.service.decimal.impl
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
-import org.apache.commons.lang3.RandomUtils;
-import org.springframework.stereotype.Component;
-
-import tdc.db.ColumnDefinitionDto;
-import tdc.service.RandomDataCreator;
+import org.apache.commons.lang3.RandomUtils
+import org.springframework.stereotype.Component
+import tdc.db.ColumnDefinitionDto
+import tdc.service.RandomDataCreator
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 @Component
-public class RandomDecimalCreator implements RandomDataCreator<BigDecimal> {
+class RandomDecimalCreator : RandomDataCreator<BigDecimal?> {
+    override fun create(cellDef: ColumnDefinitionDto?, seed: Int, dataNo: Int): BigDecimal {
+        // double random = RandomUtils.nextDouble(0, Math.pow(10, def.getSize()
+        // - def.getDegits()));
+        // BigDecimal val = BigDecimal.valueOf(random).setScale(def.getDegits(),
+        // RoundingMode.HALF_DOWN);
+        val mergeSeed = seed + dataNo
 
-    @Override
-    public BigDecimal create(ColumnDefinitionDto def, int seed, int dataNo) {
-	// double random = RandomUtils.nextDouble(0, Math.pow(10, def.getSize()
-	// - def.getDegits()));
-	// BigDecimal val = BigDecimal.valueOf(random).setScale(def.getDegits(),
-	// RoundingMode.HALF_DOWN);
-	
-	int mergeSeed =  seed + dataNo;
+        // 初期値
+        val stringSeisu = mergeSeed.toString()
 
-	// 初期値
-	String stringSeisu = String.valueOf(mergeSeed);
-	
-	// 小数生成
-	int intShosu = RandomUtils.nextInt(0, (int) Math.pow(10, def.getDigits()));
+        // 小数生成
+        val intShosu = RandomUtils.nextInt(0, Math.pow(10.0, cellDef!!.digits.toDouble()).toInt())
 
-	// 整数＋小数
-	String constructorValue = stringSeisu + "." + String.valueOf(intShosu);
-	
-	// DECIMAL生成
-	BigDecimal val = new BigDecimal(constructorValue);
-	val = val.setScale(def.getDigits(), RoundingMode.HALF_DOWN);
-	
-	if (val.precision() > def.getSize()) {
-	    val = val.remainder(BigDecimal.TEN.multiply(BigDecimal.valueOf(def.getSize())));
-	}
-	
-	return val;
+        // 整数＋小数
+        val constructorValue = "$stringSeisu.$intShosu"
+
+        // DECIMAL生成
+        var `val` = BigDecimal(constructorValue)
+        `val` = `val`.setScale(cellDef.digits, RoundingMode.HALF_DOWN)
+        if (`val`.precision() > cellDef.size) {
+            `val` = `val`.remainder(BigDecimal.TEN.multiply(BigDecimal.valueOf(cellDef.size.toLong())))
+        }
+        return `val`
     }
 }
