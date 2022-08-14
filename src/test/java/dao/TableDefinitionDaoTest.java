@@ -8,15 +8,17 @@ import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
-import dto.db.ColumnDefinitionDto;
-import dto.db.TableDefinitionDto;
+import org.springframework.boot.test.context.SpringBootTest;
+import tdc.dao.TableDefinitionDao;
+import tdc.db.ColumnDefinitionDto;
+import tdc.db.TableDefinitionDto;
 import org.junit.jupiter.api.Test;
 
+@SpringBootTest
 public class TableDefinitionDaoTest {
-	
+	TableDefinitionDao dao;
 	@Test
 	public void daoTest01() throws SQLException, Exception {
-		TableDefinitionDao dao = new TableDefinitionDao();
 		TableDefinitionDto ret = dao.getMetadata("");
 		
 		assertNotNull(ret);
@@ -25,7 +27,6 @@ public class TableDefinitionDaoTest {
 	
 	@Test
 	public void daoTest02() throws SQLException, Exception {
-		TableDefinitionDao dao = new TableDefinitionDao();
 		TableDefinitionDto ret = dao.getMetadata("not_exists_table");
 		
 		assertNotNull(ret);
@@ -37,7 +38,6 @@ public class TableDefinitionDaoTest {
 	
 	@Test
 	public void daoTest03() throws SQLException, Exception {
-		TableDefinitionDao dao = new TableDefinitionDao();
 		TableDefinitionDto ret = dao.getMetadata("test");
 		
 		assertNotNull(ret);

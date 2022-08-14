@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<Tab text="Main" xmlns="http://javafx.com/javafx"
+     xmlns:fx="http://javafx.com/fxml"
+     fx:controller="tdc.controller.CreateDataTabController"
+     closable="false">
+    <VBox fx:id="vbox">
+        <HBox>
+            <TextField fx:id="tableName"/>
+            <TextField fx:id="rowSize"/>
+            <Button fx:id="execute" onAction="#execute">Execute</Button>
+            <Label fx:id="status"/>
+        </HBox>
+        <fx:include source="/fxml/TableListWindow.fxml"/>
+    </VBox>
+</Tab>

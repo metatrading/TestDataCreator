@@ -21,9 +21,9 @@ gradle run
 ### h2
 jdbc:h2:mem:test
 ### mariadb
-jdbc:mysql://host/database
-jdbc:mysql://host/database
-jdbc:mysql://user:password@host:port/database
+* jdbc:mysql://host/database
+* jdbc:mysql://host/database
+* jdbc:mysql://user:password@host:port/database
 ## リカバリ
 `java.io.tmpidr`の`testcreatorjdbc[0-9]{1,}`ファイルを削除する。
 

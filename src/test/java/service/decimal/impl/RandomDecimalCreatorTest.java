@@ -6,8 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
 
-import dto.db.ColumnDefinitionDto;
+import tdc.db.ColumnDefinitionDto;
 import org.junit.jupiter.api.Test;
+import tdc.service.decimal.impl.RandomDecimalCreator;
 
 public class RandomDecimalCreatorTest  {
 

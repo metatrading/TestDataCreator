@@ -1,6 +1,7 @@
 package check;
 
 import org.junit.jupiter.api.Test;
+import tdc.check.CollectionCheckUtil;
 
 import java.util.Arrays;
 import java.util.Collections;

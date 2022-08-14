@@ -2,8 +2,9 @@ package service.varchar.impl;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import dto.db.ColumnDefinitionDto;
+import tdc.db.ColumnDefinitionDto;
 import org.junit.jupiter.api.Test;
+import tdc.service.varchar.impl.RandomStringCreator;
 
 public class RandomStringCreatorTest {
 

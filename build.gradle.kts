@@ -17,7 +17,7 @@ javafx {
 }
 
 application {
-    mainClass.set("main.FXMain")
+    mainClass.set("tdc.FXMain")
 
     println(gradle.gradleHomeDir)
 
@@ -41,6 +41,7 @@ repositories {
 }
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-test")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 

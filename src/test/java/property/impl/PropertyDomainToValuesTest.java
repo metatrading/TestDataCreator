@@ -1,5 +1,7 @@
 package property.impl;
 
+import tdc.property.impl.PropertyDomainToValues;
+
 import static org.hamcrest.CoreMatchers.is;
 
 import java.util.List;

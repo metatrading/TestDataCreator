@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Tab text="JDBC"
+     closable="false"
+        xmlns="http://javafx.com/javafx"
+     xmlns:fx="http://javafx.com/fxml"
+     fx:controller="tdc.controller.JdbcConfigTabController">
+    <GridPane>
+        <columnConstraints>
+            <ColumnConstraints percentWidth="10"/>
+            <ColumnConstraints percentWidth="50"/>
+        </columnConstraints>
+        <Label GridPane.rowIndex="0" GridPane.columnIndex="0">
+            URL
+        </Label>
+        <TextField fx:id="url" GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <promptText>jdbc:mysql://localhost:port/database</promptText>
+        </TextField>
+        <Label GridPane.rowIndex="1" GridPane.columnIndex="0">
+            UserName
+        </Label>
+        <TextField fx:id="userName" GridPane.rowIndex="1" GridPane.columnIndex="1">
+        </TextField>
+        <Label GridPane.rowIndex="2" GridPane.columnIndex="0">
+            Password
+        </Label>
+        <TextField fx:id="password" GridPane.rowIndex="2" GridPane.columnIndex="1">
+        </TextField>
+        <Label GridPane.rowIndex="3" GridPane.columnIndex="0">
+            Schema
+        </Label>
+        <TextField fx:id="schema" GridPane.rowIndex="3" GridPane.columnIndex="1">
+        </TextField>
+
+        <Button fx:id="saveButton" GridPane.rowIndex="4" GridPane.columnIndex="1" onAction="#saveButtonClicked">
+            適用・保存
+        </Button>
+        <Label fx:id="status" GridPane.rowIndex="5" GridPane.columnIndex="1">
+
+        </Label>
+    </GridPane>
+</Tab>

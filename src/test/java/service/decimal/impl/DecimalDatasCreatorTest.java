@@ -11,10 +11,10 @@ import javax.inject.Inject;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import app.AppConfig;
-import dto.db.ColumnDefinitionDto;
+import tdc.infrastructure.AppConfig;
+import tdc.db.ColumnDefinitionDto;
+import tdc.service.decimal.impl.DecimalDatasCreator;
 
 @SpringBootTest
 @ContextConfiguration(classes = AppConfig.class)
