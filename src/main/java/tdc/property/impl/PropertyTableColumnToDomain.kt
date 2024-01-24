@@ -5,6 +5,7 @@ import com.typesafe.config.ConfigException
 import com.typesafe.config.ConfigFactory
 import tdc.db.ColumnDefinitionDto
 import tdc.property.PropertyGetter
+import java.io.File
 import java.text.Format
 import java.text.MessageFormat
 
@@ -15,6 +16,9 @@ class PropertyTableColumnToDomain(private val field: Config) : PropertyGetter() 
     companion object {
         protected var config = ConfigFactory.load("tableToDomain")
         protected var format: Format = MessageFormat("{0}.{1}")
+        init{
+            config = ConfigFactory.parseFile(File("tableDomain.txt"))
+        }
         fun getDomain(dto: ColumnDefinitionDto): String {
             return getDomain(dto.tableName, dto.columnName)
         }

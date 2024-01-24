@@ -4,16 +4,14 @@ import javafx.application.Application
 import javafx.application.Platform
 import javafx.event.EventHandler
 import javafx.scene.Scene
-import javafx.scene.control.Tab
 import javafx.scene.control.TabPane
+import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import lombok.RequiredArgsConstructor
 import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.stereotype.Component
-import tdc.gui.CreateDataTab
 import tdc.infrastructure.MySpringFXMLLoader
-import tdc.logger.log
 import kotlin.system.exitProcess
 
 /**
@@ -26,9 +24,7 @@ import kotlin.system.exitProcess
 open class FXMain : Application() {
     private lateinit var mySpringFXMLLoader: MySpringFXMLLoader
     private lateinit var applicationContext: ConfigurableApplicationContext
-    private lateinit var tabpane:TabPane
-
-
+    private lateinit var vbox:VBox
     @Throws(Exception::class)
     override fun init() {
         super.init()
@@ -38,10 +34,10 @@ open class FXMain : Application() {
 
     @Throws(Exception::class)
     override fun start(stage: Stage) {
-        tabpane = mySpringFXMLLoader.load("fxml/FXMain.fxml")
+        vbox = mySpringFXMLLoader.load("fxml/FXMain.fxml")
         stage.onCloseRequest = EventHandler { exitProcess(0) }
         stage.title = "TestData"
-        stage.scene = Scene(tabpane)
+        stage.scene = Scene(vbox)
         stage.isMaximized = true
         stage.show()
     }

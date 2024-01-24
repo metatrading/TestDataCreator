@@ -8,10 +8,9 @@
      fx:controller="tdc.controller.MainTabController"
      closable="false">
     <VBox fx:id="vbox">
-        <fx:include source="Information.fxml"/>
         <HBox>
-            <TextField fx:id="tableName"/>
-            <TextField fx:id="rowSize"/>
+            <TextField fx:id="tableName" promptText="TABLE_NAME" />
+            <TextField fx:id="rowSize" promptText="DataSize"/>
             <Button fx:id="execute" onAction="#execute">Execute</Button>
         </HBox>
         <fx:include source="/fxml/TableListWindow.fxml"/>
